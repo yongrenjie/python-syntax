@@ -112,7 +112,8 @@ endif
 "
 syn keyword pythonOperator      and in is not or
 if s:Enabled('g:python_highlight_operators')
-    syn match pythonOperator        '\V=\|-\|+\|*\|@\|/\|%\|&\||\|^\|~\|<\|>\|!='
+    syn match pythonOperator        '\V=\|*\|@\|/\|%\|&\||\|^\|~\|<\|>\|!='
+    syn match pythonOperator        '[+-]\([0-9\.]\)\@!'
 endif
 syn match pythonError           '[$?]\|\([-+@%&|^~]\)\1\{1,}\|\([=*/<>]\)\2\{2,}\|\([+@/%&|^~<>]\)\3\@![-+*@/%&|^~<>]\|\*\*[*@/%&|^<>]\|=[*@/%&|^<>]\|-[+*@/%&|^~<]\|[<!>]\+=\{2,}\|!\{2,}=\+' display
 
@@ -327,6 +328,8 @@ else
     syn match   pythonNumberError '\<0_x\S*\>' display
     syn match   pythonNumberError '\<0[bBxXoO][_0-9a-fA-F]*_\>' display
     syn match   pythonNumberError '\<\d[_0-9]*_\>' display
+
+    syn match   pythonNumber      '[+-]\([0-9\.]\)\@='
     syn match   pythonNumber      '\<\d\>' display
     syn match   pythonNumber      '\<[1-9][_0-9]*\d\>' display
     syn match   pythonNumber      '\<\d[jJ]\>' display
